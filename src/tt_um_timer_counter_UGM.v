@@ -16,8 +16,8 @@ module tt_um_timer_counter_UGM (
     // assign uo_out = {8{1'b0}};
 
     timer_counter t0(
-        .clk(clk), .inv(uio_in[0]), .rst(rst_n),
-        .mode(uio_in[1]), .start(uio_in[2]), .stop(uio_in[3]),
+        .clk(clk), .inv(ui_in[0]), .rst(rst_n),
+        .mode(ui_in[1]), .start(ui_in[2]), .stop(ui_in[3]),
         .segment(uo_out), .digit(uio_out[3:0])
     );
 
