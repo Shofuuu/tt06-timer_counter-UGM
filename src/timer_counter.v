@@ -118,7 +118,7 @@ module timer_counter(
         .digit(segment)
     );
 
-    assign digit = (inv ? ~(1 << selector) : (1 << selector));
+    assign digit = (inv ? (1 << selector) : ~(1 << selector));
 
 endmodule
 
