@@ -11,8 +11,8 @@ module tt_um_timer_counter_UGM (
     input  wire       rst_n     // reset_n - low to reset
 );
     
-    assign uio_oe = {8{1'b0}};
-    assign uio_out[7:4] = {4{1'b0}};
+    assign uio_oe = 8'b00001111;
+    assign uio_out[7:4] = 4'b0000;
     // assign uo_out = {8{1'b0}};
 
     timer_counter t0(
