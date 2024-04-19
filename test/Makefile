@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = tt_um_timer_counter_UGM.v timer_counter.v counter.v debounce.v bcd.v
+PROJECT_SOURCES = tt_um_timer_counter_UGM.v timer_counter.v counter.v debounce.v bcd.v mux.v
 
 ifneq ($(GATES),yes)
 
