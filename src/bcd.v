@@ -48,7 +48,7 @@ module bcd (
 
     assign segment = {1'b1, g_wire, f_wire, e_wire, d_wire, c_wire, b_wire, a_wire};
 
-    assign digit = (en ? (inv ? ~segment : segment) : (inv ? {8{1'b0}} : {8{1'b1}}));
+    assign digit = (en ? (inv ? segment : ~segment) : (inv ? {8{1'b1}} : {8{1'b0}}));
 
 endmodule
 
