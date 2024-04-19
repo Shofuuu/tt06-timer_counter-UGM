@@ -62,7 +62,7 @@ async def test_segment_display(dut):
 
     count = 0
     while True:
-        #assert dut.uio_out.value == 1 and bin(dut.uo_out.value) == bin(ctypes.c_uint8(~segment_anode[count]).value), "Mismatch segment cycle value"
+        assert dut.uio_out.value == 1 and bin(dut.uo_out.value) == bin(ctypes.c_uint8(~segment_anode[count]).value), "Mismatch segment cycle value"
 
         for x in range(4):
             dut._log.info("[timer_counter] segment: %s, digit: %s",
