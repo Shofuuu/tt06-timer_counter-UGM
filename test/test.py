@@ -10,36 +10,36 @@ class BouncingSwitch():
 
     async def set(self, value, bounce_cycles = 5):
         for x in range(bounce_cycles):
-            self.dut.start.value = random.randint(0,1)
+            self.dut.ui_in[2].value = random.randint(0,1)
             await ClockCycles(self.dut.clk, 1)
 
         # set the btn value to what it should be
-        self.dut.start.value = value
+        self.dut.ui_in[2].value = value
         await ClockCycles(self.dut.clk, 1)
 
 async def reset(dut):
-    dut.rst.value = 0
-    dut.inv.value = 0
-    dut.mode.value = 0
-    dut.start.value = 0
-    dut.stop.value = 0
+    dut.rst_n.value = 0
+    dut.ui_in[0].value = 0
+    dut.ui_in[1].value = 0
+    dut.ui_in[2].value = 0
+    dut.ui_in[3].value = 0
     await ClockCycles(dut.clk, 5)
 
-    dut.rst.value = 1
+    dut.rst_n.value = 1
     await ClockCycles(dut.clk, 5)
 
 async def start(dut):
-    dut.start.value = 1
+    dut.ui_in[2].value = 1
     await ClockCycles(dut.clk, 10)
 
-    dut.start.value = 0
+    dut.ui_in[2].value = 0
     await ClockCycles(dut.clk, 10)
 
 async def mode(dut):
-    dut.mode.value = 1
+    dut.ui_in[1].value = 1
     await ClockCycles(dut.clk, 10)
 
-    dut.mode.value = 0
+    dut.ui_in[1].value = 0
     await ClockCycles(dut.clk, 10)
 
 async def test_segment_display(dut):
@@ -62,31 +62,31 @@ async def test_segment_display(dut):
 
     count = 0
     while True:
-        #assert dut.digit.value == 1 and bin(dut.segment.value) == bin(ctypes.c_uint8(~segment_anode[count]).value), "Mismatch segment cycle value"
+        #assert dut.uio_out.value == 1 and bin(dut.uo_out.value) == bin(ctypes.c_uint8(~segment_anode[count]).value), "Mismatch segment cycle value"
 
         for x in range(4):
             dut._log.info("[timer_counter] segment: %s, digit: %s",
-                          dut.segment.value, dut.digit.value)
+                          dut.uo_out.value, dut.uio_out.value)
             await ClockCycles(dut.clk, 1)
 
         count += 1
 
         """if count == 5:
-            dut.mode.value = 1
+            dut.ui_in[1].value = 1
             await ClockCycles(dut.clk, 10)
-            dut.mode.value = 0
+            dut.ui_in[1].value = 0
             await ClockCycles(dut.clk, 10)
 
         if count == 6:
-            dut.mode.value = 1
+            dut.ui_in[1].value = 1
             await ClockCycles(dut.clk, 10)
-            dut.mode.value = 0
+            dut.ui_in[1].value = 0
             await ClockCycles(dut.clk, 10)
 
         if count == 7:
-            dut.start.value = 1
+            dut.ui_in[2].value = 1
             await ClockCycles(dut.clk, 10)
-            dut.start.value = 0
+            dut.ui_in[2].value = 0
             await ClockCycles(dut.clk, 10)"""
 
         if count > 9:
@@ -124,7 +124,7 @@ async def test_timer_counter(dut):
         #await switch.set(1)
         
         dut._log.info("[timer_counter] segment: %s, digit: %s",
-                      dut.segment.value, dut.digit.value)
+                      dut.uo_out.value, dut.uio_out.value)
         await ClockCycles(dut.clk, 1)
     """
 
