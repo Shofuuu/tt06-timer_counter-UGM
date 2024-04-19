@@ -1,5 +1,5 @@
 `default_nettype none
-`timescale 1ns/1ns
+// `timescale 1ns/1ns
 
 module debounce #(
     parameter SREG_SIZE = 8
