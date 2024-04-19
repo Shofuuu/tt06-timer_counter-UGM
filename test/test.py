@@ -131,7 +131,7 @@ async def test_timer_counter(dut):
     await test_segment_display(dut)
     #await test_start_manual(dut, 128)
 
-    dut.inv.value = 1
+    dut.ui_in[0].value = 1
     await ClockCycles(dut.clk, 5)
     await test_segment_display(dut)
 
