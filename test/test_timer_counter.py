@@ -134,4 +134,3 @@ async def test_timer_counter(dut):
 
 
 
-
