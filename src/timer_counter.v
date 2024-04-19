@@ -1,5 +1,5 @@
 `default_nettype none
-`timescale 1ns/1ns
+// `timescale 1ns/1ns
 
 module timer_counter(
     input wire clk, inv, rst,
